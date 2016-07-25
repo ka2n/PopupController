@@ -12,6 +12,8 @@ class DemoPopupViewController1: UIViewController, PopupContentViewController {
     
     var closeHandler: (() -> Void)?
 
+    @IBOutlet weak var shouldAutoCloseSwitch: UISwitch!
+    
     @IBOutlet weak var button: UIButton! {
         didSet {
             button.layer.borderColor = UIColor(red: 242/255, green: 105/255, blue: 100/255, alpha: 1.0).CGColor
@@ -37,7 +39,11 @@ class DemoPopupViewController1: UIViewController, PopupContentViewController {
     }
     
     func sizeForPopup(popupController: PopupController, size: CGSize, showingKeyboard: Bool) -> CGSize {
-        return CGSizeMake(300,300)
+        return CGSizeMake(300,400)
+    }
+    
+    func shouldAutoClosePopup(popupController: PopupController) -> Bool {
+        return shouldAutoCloseSwitch.on
     }
     
     @IBAction func didTapCloseButton(sender: AnyObject) {

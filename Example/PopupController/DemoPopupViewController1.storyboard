@@ -106,13 +106,22 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Popup View is Here." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAk-w3-5Ge">
-                                <rect key="frame" x="32" y="140" width="536" height="21.5"/>
+                                <rect key="frame" x="32" y="140" width="536" height="22"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Notifications so you'll get happy things :)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAE-QS-g2H">
-                                <rect key="frame" x="32" y="171.5" width="536" height="20.5"/>
+                                <rect key="frame" x="32" y="172" width="536" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Wm9-en-D26">
+                                <rect key="frame" x="365" y="228" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto close?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uy2-kX-E8y">
+                                <rect key="frame" x="256" y="233" width="89" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -121,12 +130,16 @@
                         <color key="backgroundColor" red="0.94509803921568625" green="0.94117647058823528" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="tAE-QS-g2H" firstAttribute="top" secondItem="EAk-w3-5Ge" secondAttribute="bottom" constant="10" id="5WM-Yp-8ab"/>
+                            <constraint firstItem="Wm9-en-D26" firstAttribute="centerY" secondItem="uy2-kX-E8y" secondAttribute="centerY" id="85I-IM-RDY"/>
                             <constraint firstAttribute="trailing" secondItem="tAE-QS-g2H" secondAttribute="trailing" constant="32" id="8GP-ux-MRv"/>
                             <constraint firstItem="EAk-w3-5Ge" firstAttribute="leading" secondItem="owv-sh-6u0" secondAttribute="leading" constant="32" id="9Ov-ek-fRS"/>
                             <constraint firstItem="EAk-w3-5Ge" firstAttribute="top" secondItem="2Vh-jw-Xwa" secondAttribute="bottom" constant="40" id="9Ta-O3-s8N"/>
                             <constraint firstAttribute="trailing" secondItem="drs-Np-Jeu" secondAttribute="trailing" constant="32" id="EAJ-KW-Rhu"/>
                             <constraint firstItem="drs-Np-Jeu" firstAttribute="leading" secondItem="owv-sh-6u0" secondAttribute="leading" constant="32" id="GG6-At-gd9"/>
                             <constraint firstAttribute="trailing" secondItem="2Vh-jw-Xwa" secondAttribute="trailing" id="LxD-mE-2LR"/>
+                            <constraint firstItem="uy2-kX-E8y" firstAttribute="centerX" secondItem="owv-sh-6u0" secondAttribute="centerX" id="Swn-gn-Qk2"/>
+                            <constraint firstItem="uy2-kX-E8y" firstAttribute="top" secondItem="tAE-QS-g2H" secondAttribute="bottom" constant="40" id="Tli-4F-Nta"/>
+                            <constraint firstItem="Wm9-en-D26" firstAttribute="leading" secondItem="uy2-kX-E8y" secondAttribute="trailing" constant="20" id="WqQ-vE-7nt"/>
                             <constraint firstItem="2Vh-jw-Xwa" firstAttribute="leading" secondItem="owv-sh-6u0" secondAttribute="leading" id="YCn-Za-fC5"/>
                             <constraint firstAttribute="trailing" secondItem="EAk-w3-5Ge" secondAttribute="trailing" constant="32" id="YMF-be-ebB"/>
                             <constraint firstItem="tAE-QS-g2H" firstAttribute="leading" secondItem="owv-sh-6u0" secondAttribute="leading" constant="32" id="eJA-Dg-Qch"/>
@@ -142,6 +155,7 @@
                     </view>
                     <connections>
                         <outlet property="button" destination="drs-Np-Jeu" id="nIu-aY-O5z"/>
+                        <outlet property="shouldAutoCloseSwitch" destination="Wm9-en-D26" id="Kzn-cK-muQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gvd-ft-vKR" userLabel="First Responder" sceneMemberID="firstResponder"/>
