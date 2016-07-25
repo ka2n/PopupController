@@ -29,6 +29,17 @@ public protocol PopupContentViewController {
         return view's size
      */
     func sizeForPopup(popupController: PopupController, size: CGSize, showingKeyboard: Bool) -> CGSize
+    
+    /** shouldAutoClosePopup(popupController:):
+        return popup should close or not.
+     */
+    func shouldAutoClosePopup(popupController: PopupController) -> Bool
+}
+
+public extension PopupContentViewController {
+    func shouldAutoClosePopup(popupController: PopupController) -> Bool {
+        return true
+    }
 }
 
 public class PopupController: UIViewController {
@@ -84,6 +95,7 @@ public class PopupController: UIViewController {
     private var defaultContentOffset = CGPoint.zero
     private var closedHandler: ((PopupController) -> Void)?
     private var showedHandler: ((PopupController) -> Void)?
+    private var shouldAutoClosePopupHandler: ((PopupController) -> Bool)?
     
     
     private var maximumSize: CGSize {
@@ -159,6 +171,11 @@ public extension PopupController {
     
     public func didCloseHanlder(handler: (PopupController) -> Void) -> PopupController {
         self.closedHandler = handler
+        return self
+    }
+    
+    public func shouldAutoClosePopupHandler(handler: (PopupController) -> Bool) -> PopupController {
+        self.shouldAutoClosePopupHandler = handler
         return self
     }
     
@@ -272,7 +289,16 @@ private extension PopupController {
     
     // Tap Gesture
     @objc func didTapGesture(sender: UITapGestureRecognizer) {
+        guard shouldAutoClosePopup() else { return }
         self.closePopup { _ in }
+    }
+    
+    func shouldAutoClosePopup() -> Bool {
+        if shouldAutoClosePopupHandler?(self) == false { return false }
+        guard let childViewController = childViewControllers.last as? PopupContentViewController else {
+            return true
+        }
+        return childViewController.shouldAutoClosePopup(self)
     }
     
     func closePopup(completion: (() -> Void)?) {
